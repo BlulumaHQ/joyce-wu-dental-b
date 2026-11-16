@@ -19,3 +19,4 @@
 - Factual clinic content must come from the source site; never invent credentials, prices, ratings or outcomes. Why: real healthcare business.
 - The inquiry form's server function has no delivery channel until the clinic approves one; it must never report fake success. Why: no lost patient inquiries.
 - Homepage patient navigation uses reusable local-state tab components; bilingual interaction copy stays in `src/content/pages.ts` and destinations use `routeTo`. Why: accessible interaction without new URLs, services or backend dependencies.
+- Visual variants use shared semantic CSS tokens, page blocks, and logo lockups without changing leaf routes or inquiry handlers. Why: restyle both languages while preserving navigation, SEO, and appointment behaviour.

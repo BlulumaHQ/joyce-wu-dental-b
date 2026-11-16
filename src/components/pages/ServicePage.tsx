@@ -21,7 +21,7 @@ export function ServicePage({ service, lang }: { service: ServiceKey; lang: Lang
     : { onPage: "本頁內容", ask: "查詢此治療", other: "其他服務", heroAlt: "Dr. Joyce Wu Dental Kerrisdale 診所內部", suitability: "治療建議須視乎牙醫的檢查結果而定。" };
 
   return (
-    <>
+    <div className="version-b-inner">
       <PageHeader page={service} lang={lang} image={{ src: HERO[service], alt: L.heroAlt }}>
         <nav aria-label={L.onPage} className="mt-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{L.onPage}</p>
@@ -37,14 +37,14 @@ export function ServicePage({ service, lang }: { service: ServiceKey; lang: Lang
         </nav>
       </PageHeader>
 
-      <div className="py-16 md:py-24">
+      <div className="service-sections">
         <div className="container-page space-y-20 md:space-y-28">
           {content.sections.map((s, i) => (
             <section key={s.id} id={s.id} aria-labelledby={`${s.id}-h`} className="scroll-mt-28">
               <div className={cn("grid items-center gap-10 lg:gap-16", s.image ? "lg:grid-cols-2" : "lg:grid-cols-[1fr_1.4fr]")}>
                 <div className={cn(s.image && i % 2 === 1 && "lg:order-2")}>
                   <span className="font-display text-sm text-champagne-ink">{String(i + 1).padStart(2, "0")}</span>
-                  <h2 id={`${s.id}-h`} className="mt-2 font-display text-3xl font-semibold leading-tight md:text-[2.25rem]">
+                  <h2 id={`${s.id}-h`} className="editorial-title mt-2">
                     {s.title}
                   </h2>
                   <div className="rule-champagne mt-5 w-16" />
@@ -106,7 +106,7 @@ export function ServicePage({ service, lang }: { service: ServiceKey; lang: Lang
           </ul>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

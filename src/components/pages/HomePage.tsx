@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, CreditCard, MapPin, ShieldCheck, Stethoscope } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CreditCard, MapPin, ShieldCheck, Stethoscope, Sparkles, HeartPulse, CircleDot } from "lucide-react";
 import { FAQS, META, SERVICES } from "@/content/pages";
-import { DOCTORS, routeTo, SERVICE_KEYS, UI, type Lang } from "@/content/site";
+import { HOURS, DOCTORS, routeTo, SERVICE_KEYS, UI, type Lang } from "@/content/site";
 import { buttonStyles } from "@/components/site/Button";
 import { ContactSection, FaqList, SectionHeading, Testimonials } from "@/components/site/Blocks";
 import { cn } from "@/lib/utils";
@@ -95,56 +95,56 @@ export function HomePage({ lang }: { lang: Lang }) {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-primary-deep">
-        <img
-          src="/images/clinic-reception-kerrisdale.webp"
-          alt={lang === "en" ? "Reception desk at Dr. Joyce Wu Dental Kerrisdale" : "Dr. Joyce Wu Dental Kerrisdale 診所接待處"}
-          width={1200}
-          height={630}
-          fetchPriority="high"
-          className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center]"
-        />
-        <div aria-hidden className="hero-overlay absolute inset-0 -z-10" />
-        <div className="container-page flex min-h-[560px] flex-col justify-center py-20 md:min-h-[640px] lg:min-h-[700px]">
-          <div className="fade-up max-w-2xl">
-            <p className="eyebrow eyebrow-dark">{c.heroEyebrow}</p>
-            <h1 className="mt-6 font-display text-[2.35rem] font-semibold leading-[1.08] text-on-dark sm:text-5xl lg:text-[4rem]">{m.h1}</h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-on-dark-muted">{m.intro}</p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link to={routeTo("contact", lang)} hash="inquiry" className={buttonStyles({ variant: "champagne", size: "lg" })}>
-                {ui.request}
-              </Link>
-              <Link to={routeTo("home", lang)} hash="services" className={buttonStyles({ variant: "ghostDark", size: "lg" })}>
-                {ui.explore}
-              </Link>
+      <section className="bg-background py-14 md:py-20">
+        <div className="container-page grid items-center gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16">
+          <div className="fade-up">
+            <p className="eyebrow">{c.heroEyebrow}</p>
+            <h1 className="page-heading mt-6 text-primary">{m.h1.split("Kerrisdale").map((part, i) => <span key={i}>{i > 0 && <em className="font-medium text-champagne-ink">Kerrisdale</em>}{part}</span>)}</h1>
+            <p className="mt-6 max-w-xl text-muted-foreground">{m.intro}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link to={routeTo("contact", lang)} hash="inquiry" className={buttonStyles({ size: "lg" })}>{ui.request}<ArrowUpRight aria-hidden className="size-4" /></Link>
+              <Link to={routeTo("home", lang)} hash="services" className={buttonStyles({ variant: "outline", size: "lg" })}>{ui.explore}</Link>
+            </div>
+            <dl className="mt-10 grid grid-cols-3 gap-4 border-b border-border pb-6">
+              <div><dt className="font-display text-[30px] leading-tight text-primary">4</dt><dd className="mt-1 text-[13px] text-muted-foreground">{lang === "en" ? "dentists, one clinic" : "位牙醫，同一診所"}</dd></div>
+              <div><dt className="font-display text-[30px] leading-tight text-primary">{lang === "en" ? "Sat" : "週六"}</dt><dd className="mt-1 text-[13px] text-muted-foreground">{lang === "en" ? "appointments available" : "提供看診預約"}</dd></div>
+              <div><dt className="font-display text-[30px] leading-tight text-primary">CDCP</dt><dd className="mt-1 text-[13px] text-muted-foreground">{lang === "en" ? "& most insurance plans" : "及大多數保險計劃"}</dd></div>
+            </dl>
+          </div>
+          <div className="relative mx-auto w-full max-w-[470px] pb-8 pr-[22px] lg:pb-0">
+            <div aria-hidden className="hero-arch absolute inset-y-0 left-[22px] right-0 border border-champagne" />
+            <img src="/images/clinic-reception-kerrisdale.webp" alt={lang === "en" ? "Reception desk at Dr. Joyce Wu Dental Kerrisdale" : "Dr. Joyce Wu Dental Kerrisdale 診所接待處"} width={1200} height={630} fetchPriority="high" className="hero-arch relative w-full object-cover" />
+            <div className="absolute bottom-0 left-0 flex max-w-[95%] items-center gap-3 rounded-2xl border bg-background p-4 shadow-soft lg:-left-8 lg:bottom-7">
+              <img src="/images/jwd-logo-mark.svg" alt="" width={48} height={48} className="size-12 shrink-0" />
+              <div><p className="font-display text-2xl font-semibold text-primary">{lang === "en" ? "Open Saturdays" : "星期六營業"}</p><p className="text-xs text-muted-foreground">{HOURS.find(h => h.schema === "Saturday")?.label[lang]} · {lang === "en" ? "Closed Wed & Sun" : "星期三、日休息"}</p></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Intro */}
-      <section className="py-20 md:py-28">
+      <section className="section-space bg-primary text-on-dark">
         <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="relative">
             <img src="/images/clinic-waiting-area.webp" alt={lang === "en" ? "Bright patient waiting area with large windows" : "光線充足的候診區"} width={585} height={444} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
-            <img src="/images/clinic-treatment-room.webp" alt={lang === "en" ? "Treatment room with dental chair" : "設有牙科椅的治療室"} width={585} height={444} loading="lazy" className="absolute -bottom-10 -right-4 hidden w-[46%] rounded-xl border-4 border-background object-cover shadow-lift sm:block md:-right-8" />
+            <img src="/images/clinic-treatment-room.webp" alt={lang === "en" ? "Treatment room with dental chair" : "設有牙科椅的治療室"} width={585} height={444} loading="lazy" className="absolute -bottom-10 -right-4 hidden w-[46%] rounded-xl border-[6px] border-primary object-cover shadow-lift sm:block md:-right-8" />
           </div>
           <div>
-            <p className="eyebrow">{c.welcomeEyebrow}</p>
-            <h2 className="mt-4 font-display text-3xl font-semibold leading-tight md:text-[2.6rem]">{c.welcomeTitle}</h2>
+            <p className="eyebrow eyebrow-dark">{c.welcomeEyebrow}</p>
+            <h2 className="editorial-title mt-4 text-on-dark">{c.whyTitle}</h2>
+            <p className="mt-5 font-display text-2xl text-gold-light">{c.welcomeTitle}</p>
             {c.welcome.map((p) => (
-              <p key={p} className="mt-5 text-lg leading-relaxed text-muted-foreground">
+              <p key={p} className="mt-5 leading-relaxed text-on-dark-muted">
                 {p}
               </p>
             ))}
-            <div className="mt-8 border-l-2 border-champagne pl-5">
-              <h3 className="flex items-center gap-2 font-display text-lg font-semibold">
-                <ShieldCheck className="size-5 text-primary" aria-hidden /> {c.safetyTitle}
+            <div className="mt-8 rounded-2xl border border-on-dark/15 bg-on-dark/5 p-5">
+              <h3 className="flex items-center gap-2 font-display text-2xl font-semibold text-on-dark">
+                <ShieldCheck className="size-5 text-gold-light" aria-hidden /> {c.safetyTitle}
               </h3>
-              <p className="mt-2 text-[0.95rem] leading-relaxed text-muted-foreground">{c.safety}</p>
+              <p className="mt-2 text-[0.95rem] leading-relaxed text-on-dark-muted">{c.safety}</p>
             </div>
-            <Link to={routeTo("about", lang)} className={cn(buttonStyles({ variant: "outline" }), "mt-8")}>
+            <Link to={routeTo("about", lang)} className={cn(buttonStyles({ variant: "ghostDark" }), "mt-8")}>
               {c.aboutLink} <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>
@@ -154,7 +154,7 @@ export function HomePage({ lang }: { lang: Lang }) {
       <DentalServiceFinder key={`finder-${lang}`} lang={lang} />
 
       {/* Services */}
-      <section id="services" className="scroll-mt-24 bg-surface py-20 md:py-28">
+      <section id="services" className="scroll-mt-24 bg-background section-space">
         <div className="container-page">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading eyebrow={c.servicesEyebrow} title={c.servicesTitle} />
@@ -166,19 +166,14 @@ export function HomePage({ lang }: { lang: Lang }) {
                 <Link
                   key={k}
                   to={routeTo(k, lang)}
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl border bg-background transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lift"
+                  className="group flex min-h-[420px] flex-col rounded-[24px] border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
                 >
-                  <div className="aspect-[4/3] overflow-hidden bg-surface">
-                    <img src={s.image} alt="" width={585} height={444} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <span className="font-display text-sm text-champagne-ink">0{idx + 1}</span>
-                    <h3 className="mt-2 font-display text-xl font-semibold">{ui.pageName[k]}</h3>
-                    <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-muted-foreground">{s.card}</p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary">
-                      {ui.viewServices}
-                      <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-                    </span>
+                  <span className="flex size-16 items-center justify-center rounded-full bg-secondary text-primary">{idx === 0 ? <Stethoscope strokeWidth={1.3} /> : idx === 1 ? <Sparkles strokeWidth={1.3} /> : idx === 2 ? <HeartPulse strokeWidth={1.3} /> : <CircleDot strokeWidth={1.3} />}</span>
+                  <div className="flex flex-1 flex-col">
+                    <h3 className="mt-6 font-display text-[30px] font-medium leading-[1.1]">{ui.pageName[k]}</h3>
+                    <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">{s.card}</p>
+                    <ul className="mt-5 flex-1 space-y-2 border-t pt-5 text-[14px] text-muted-foreground">{s.sections.map(t => <li key={t.id}>{t.title}</li>)}</ul>
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-champagne-ink">{ui.viewServices}<ArrowRight className="size-4" aria-hidden /></span>
                   </div>
                 </Link>
               );
@@ -188,54 +183,44 @@ export function HomePage({ lang }: { lang: Lang }) {
       </section>
 
       {/* Why */}
-      <section className="bg-primary-deep py-20 md:py-28">
+      <section className="section-space bg-secondary">
         <div className="container-page grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div>
-            <SectionHeading eyebrow={c.whyEyebrow} title={c.whyTitle} dark />
+            <SectionHeading eyebrow={c.whyEyebrow} title={c.whyTitle} />
             <img src="/images/clinic-treatment-room-map.webp" alt={lang === "en" ? "Treatment room with world-map wall feature" : "設有世界地圖牆飾的治療室"} width={585} height={444} loading="lazy" className="mt-10 aspect-[4/3] w-full rounded-2xl object-cover" />
           </div>
-          <ul className="grid gap-px self-center overflow-hidden rounded-2xl bg-border-dark sm:grid-cols-2">
+          <ul className="grid gap-px self-center overflow-hidden rounded-2xl bg-border sm:grid-cols-2">
             {c.why.map((w) => (
-              <li key={w.t} className="bg-primary-deep p-8">
+              <li key={w.t} className="bg-secondary p-8">
                 <w.icon className="size-6 text-champagne" strokeWidth={1.5} aria-hidden />
-                <h3 className="mt-5 font-display text-lg font-semibold text-on-dark">{w.t}</h3>
-                <p className="mt-2 text-[0.95rem] leading-relaxed text-on-dark-muted">{w.d}</p>
+                <h3 className="mt-5 font-display text-[27px] font-medium text-primary">{w.t}</h3>
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-muted-foreground">{w.d}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-20 md:py-28">
+      <section className="section-space bg-primary-deep">
         <div className="container-page">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHeading eyebrow={c.teamEyebrow} title={c.teamTitle} />
-            <Link to={routeTo("team", lang)} className={buttonStyles({ variant: "outline" })}>
-              {c.teamLink} <ArrowRight className="size-4" aria-hidden />
-            </Link>
-          </div>
-          <ul className="mt-14 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 lg:grid-cols-4">
-            {DOCTORS.map((d) => (
-              <li key={d.name}>
-                <Link to={routeTo("team", lang)} className="group flex h-full flex-col overflow-hidden rounded-2xl border bg-surface transition-shadow hover:shadow-lift">
-                  <div className="aspect-square overflow-hidden bg-muted">
-                    <img src={d.image} alt={`${d.name}, ${d.designation}`} width={800} height={800} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                  </div>
-                  <div className="flex flex-1 flex-col p-5">
-                    <h3 className="font-display text-lg font-semibold">{d.name}</h3>
-                    <p className="mt-1 text-sm font-medium tracking-wide text-champagne-ink">{d.designation}</p>
-                  </div>
-                </Link>
-              </li>
-            ))}
+          <SectionHeading eyebrow={c.teamEyebrow} title={c.teamTitle} center dark />
+          <ul className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {DOCTORS.map(d => <li key={d.name}>
+              <Link to={routeTo("team", lang)} className="group block">
+                <img src={d.image} alt={`${d.name}, ${d.designation}`} width={800} height={800} loading="lazy" className="portrait-arch w-full object-cover transition-transform duration-500 group-hover:-translate-y-1" />
+                <h3 className="mt-6 font-display text-[27px] font-medium text-on-dark">{d.name}</h3>
+                <p className="mt-1 text-[13px] tracking-[0.18em] text-gold-light">{d.designation}</p>
+                {d.name === "Dr. Miles Chu" && <p className="mt-3 text-sm text-on-dark-muted">{lang === "en" ? "Nobel Biocare implants" : "Nobel Biocare 植體"}</p>}
+              </Link>
+            </li>)}
           </ul>
+          <div className="mt-10 text-center"><Link to={routeTo("team", lang)} className={buttonStyles({ variant: "ghostDark" })}>{c.teamLink}<ArrowRight className="size-4" aria-hidden /></Link></div>
         </div>
       </section>
 
       {/* New patients */}
       <FirstVisitJourney key={`journey-${lang}`} lang={lang}>
-        <div className="mt-12 grid gap-8 border-t border-primary/20 pt-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="mt-12 border-t pt-8">
           <div>
             <SectionHeading eyebrow={c.npEyebrow} title={c.npTitle} />
             <div className="mt-8 flex flex-wrap gap-3">
@@ -247,11 +232,11 @@ export function HomePage({ lang }: { lang: Lang }) {
               </Link>
             </div>
           </div>
-          <ol className="grid gap-5 sm:grid-cols-2">
+          <ol className="mt-8 grid gap-5 md:grid-cols-3">
             {c.np.map((n, i) => (
-              <li key={n.t} className="border-l border-primary/20 pl-5">
+              <li key={n.t} className={cn("rounded-2xl bg-secondary p-6", i === 0 && "md:col-span-3")}>
                 <span className="font-display text-3xl font-light text-champagne-ink">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-3 font-display text-lg font-semibold">{n.t}</h3>
+                <h3 className="mt-3 font-display text-[27px] font-medium">{n.t}</h3>
                 <p className="mt-2 text-[0.95rem] leading-relaxed text-muted-foreground">{n.d}</p>
               </li>
             ))}
@@ -262,7 +247,7 @@ export function HomePage({ lang }: { lang: Lang }) {
       <Testimonials lang={lang} />
 
       {/* FAQ */}
-      <section className="py-20 md:py-28">
+      <section className="section-space">
         <div className="container-page grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
           <div>
             <SectionHeading eyebrow={c.faqEyebrow} title={c.faqTitle} />
@@ -275,7 +260,7 @@ export function HomePage({ lang }: { lang: Lang }) {
       </section>
 
       <div className="border-t">
-        <ContactSection lang={lang} />
+        <ContactSection lang={lang} compact />
       </div>
     </>
   );

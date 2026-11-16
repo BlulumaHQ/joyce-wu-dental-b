@@ -11,8 +11,8 @@ export function PageHeader({ page, lang, image, children }: { page: PageKey; lan
   const m = META[page][lang];
   const ui = UI[lang];
   return (
-    <section className="relative overflow-hidden border-b bg-background">
-      <div className="container-page grid items-end gap-10 py-12 md:py-16 lg:grid-cols-[1.15fr_1fr] lg:py-20">
+    <section className="page-header relative overflow-hidden border-b bg-background">
+      <div className="container-page grid items-center gap-10 section-space lg:grid-cols-[1.15fr_1fr]">
         <div className="fade-up">
           <nav aria-label={lang === "en" ? "Breadcrumb" : "導覽路徑"}>
             <ol className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -27,13 +27,13 @@ export function PageHeader({ page, lang, image, children }: { page: PageKey; lan
               </li>
             </ol>
           </nav>
-          <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.08] md:text-5xl lg:text-[3.5rem]">{m.h1}</h1>
+          <h1 className="page-heading mt-6">{m.h1}</h1>
           <div className="rule-champagne mt-7 w-24" />
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{m.intro}</p>
           {children}
         </div>
         {image && (
-          <div className="relative hidden lg:block">
+          <div className="relative">
             <img src={image.src} alt={image.alt} width={585} height={444} fetchPriority="high" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lift" />
             <div aria-hidden className="absolute -bottom-4 -left-4 -z-10 h-full w-full rounded-2xl border border-champagne/60" />
           </div>
@@ -47,7 +47,7 @@ export function SectionHeading({ eyebrow, title, body, center, dark }: { eyebrow
   return (
     <div className={cn("max-w-2xl", center && "mx-auto text-center")}>
       {eyebrow && <p className={cn("eyebrow", dark && "eyebrow-dark", center && "justify-center")}>{eyebrow}</p>}
-      <h2 className={cn("mt-4 font-display text-3xl font-semibold leading-tight md:text-[2.6rem]", dark && "text-on-dark")}>{title}</h2>
+      <h2 className={cn("editorial-title mt-4", dark && "text-on-dark")}>{title}</h2>
       {body && <p className={cn("mt-5 text-lg leading-relaxed", dark ? "text-on-dark-muted" : "text-muted-foreground")}>{body}</p>}
     </div>
   );
@@ -78,8 +78,8 @@ export function Testimonials({ lang }: { lang: Lang }) {
   };
 
   return (
-    <section className="bg-surface py-20 md:py-28" aria-roledescription="carousel" aria-label={L.title}>
-      <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+    <section className="bg-secondary section-space" aria-roledescription="carousel" aria-label={L.title}>
+      <div className="container-page grid gap-12">
         <div>
           <SectionHeading eyebrow={L.eyebrow} title={L.title} />
           <p className="mt-5 text-sm text-muted-foreground">{L.note}</p>
@@ -99,32 +99,30 @@ export function Testimonials({ lang }: { lang: Lang }) {
           }}
           className="relative rounded-2xl"
         >
-          <div className="grid">
+          <div className="grid lg:grid-cols-3 lg:gap-6">
             {TESTIMONIALS.map((t, idx) => (
               <figure
                 key={t.name}
                 role="group"
                 aria-roledescription="slide"
                 aria-label={`${L.slide} ${idx + 1} / ${n}`}
-                aria-hidden={idx !== i}
                 lang="en"
                 className={cn(
-                  "col-start-1 row-start-1 flex flex-col justify-between rounded-2xl border bg-ivory p-8 transition-all duration-500 md:p-12",
+                  "col-start-1 row-start-1 flex flex-col justify-between rounded-[24px] border bg-surface p-8 transition-all duration-500 lg:col-auto lg:row-auto lg:visible lg:translate-x-0 lg:opacity-100",
                   idx === i ? "visible translate-x-0 opacity-100" : "invisible translate-x-4 opacity-0",
                 )}
               >
                 <div>
-                  <span aria-hidden className="font-display text-6xl leading-none text-champagne">“</span>
-                  <blockquote className="mt-2 font-display text-xl leading-relaxed text-primary-deep md:text-[1.45rem]">{t.text}</blockquote>
+                  <Stars n={t.rating} />
+                  <blockquote className="mt-2 font-display text-[22px] leading-relaxed text-primary-deep">{t.text}</blockquote>
                 </div>
                 <figcaption className="mt-8 flex items-center justify-between gap-4 border-t pt-6">
-                  <span className="font-medium text-primary-deep">{t.name}</span>
-                  <Stars n={t.rating} />
+                  <span className="text-sm text-primary-deep">{t.name} · Google review</span>
                 </figcaption>
               </figure>
             ))}
           </div>
-          <div className="mt-6 flex items-center justify-between">
+          <div className="mt-6 flex items-center justify-between lg:hidden">
             <div className="flex gap-2">
               {TESTIMONIALS.map((t, idx) => (
                 <button
@@ -140,10 +138,10 @@ export function Testimonials({ lang }: { lang: Lang }) {
               ))}
             </div>
             <div className="flex gap-2">
-              <button type="button" onClick={() => go(-1)} aria-label={L.prev} className="inline-flex size-11 items-center justify-center rounded-full border border-primary/25 text-primary transition-colors hover:bg-primary hover:text-primary-foreground">
+              <button type="button" onClick={() => go(-1)} aria-label={L.prev} className="inline-flex size-11 items-center justify-center rounded-full border  text-primary transition-colors hover:bg-primary hover:text-primary-foreground">
                 <ChevronLeft className="size-5" aria-hidden />
               </button>
-              <button type="button" onClick={() => go(1)} aria-label={L.next} className="inline-flex size-11 items-center justify-center rounded-full border border-primary/25 text-primary transition-colors hover:bg-primary hover:text-primary-foreground">
+              <button type="button" onClick={() => go(1)} aria-label={L.next} className="inline-flex size-11 items-center justify-center rounded-full border  text-primary transition-colors hover:bg-primary hover:text-primary-foreground">
                 <ChevronRight className="size-5" aria-hidden />
               </button>
             </div>
@@ -157,12 +155,12 @@ export function Testimonials({ lang }: { lang: Lang }) {
 export function FaqList({ items, lang, reviewNotes = false }: { items: Faq[]; lang: Lang; reviewNotes?: boolean }) {
   const [open, setOpen] = useState<string | null>(items[0]?.id ?? null);
   return (
-    <div className="divide-y rounded-2xl border bg-surface">
+    <div className="faq-editorial divide-y">
       {items.map((f) => {
         const isOpen = open === f.id;
         return (
           <div key={f.id} id={f.id} className="scroll-mt-28">
-            <h3 className="font-display text-base font-semibold md:text-lg">
+            <h3 className="font-display text-[25px] font-medium">
               <button
                 type="button"
                 aria-expanded={isOpen}
@@ -172,7 +170,7 @@ export function FaqList({ items, lang, reviewNotes = false }: { items: Faq[]; la
                 className={cn("flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition-colors md:px-8", isOpen ? "text-primary" : "text-primary-deep hover:text-primary")}
               >
                 {f.q}
-                <span className={cn("flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300", isOpen ? "rotate-45 border-primary bg-primary text-primary-foreground" : "border-primary/25")}>
+                <span className={cn("faq-toggle flex size-8 shrink-0 items-center justify-center rounded-full transition-all duration-300", isOpen ? "rotate-45" : "")}>
                   <Plus className="size-4" aria-hidden />
                 </span>
               </button>
@@ -264,13 +262,31 @@ export function MapEmbed({ lang, className }: { lang: Lang; className?: string }
 }
 
 /** Final conversion block: details, hours, map and inquiry form. */
-export function ContactSection({ lang, heading = true, defaultService }: { lang: Lang; heading?: boolean; defaultService?: string | undefined }) {
+export function ContactSection({ lang, heading = true, defaultService, compact = false }: { lang: Lang; heading?: boolean; defaultService?: string | undefined; compact?: boolean }) {
   const ui = UI[lang];
   const L = lang === "en"
     ? { eyebrow: "Visit Us", title: "Find Us in Kerrisdale", body: "We're on Balsam Street in Kerrisdale, Vancouver. Call, email or send an inquiry to arrange your visit." }
     : { eyebrow: "歡迎蒞臨", title: "位於 Kerrisdale 的診所", body: "我們位於溫哥華 Kerrisdale 的 Balsam Street。歡迎致電、發送電郵或提交查詢以安排看診。" };
+  if (compact) return (
+    <section className="contact-dark section-space bg-primary text-on-dark" aria-labelledby="visit-title">
+      <div className="container-page grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+        <div>
+          <div id="visit-title"><SectionHeading eyebrow={L.eyebrow} title={L.title} body={L.body} dark /></div>
+          <div className="mt-8"><ContactDetails lang={lang} /></div>
+          <a href={CLINIC.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 text-gold-light">{ui.directions}<ArrowRight aria-hidden className="size-4" /></a>
+          <img src="/images/clinic-treatment-room-map.webp" alt={lang === "en" ? "Treatment room with world-map wall feature" : "設有世界地圖牆飾的治療室"} width={585} height={444} loading="lazy" className="mt-8 aspect-[16/9] w-full rounded-[24px] object-cover" />
+        </div>
+        <div className="rounded-[28px] bg-background p-7 md:p-10">
+          <h3 className="font-display text-[34px] font-medium text-primary">{ui.hours}</h3>
+          <HoursList lang={lang} className="mt-6" />
+          <p className="mt-5 text-sm text-muted-foreground">{ui.hoursNote}</p>
+          <div className="mt-8 flex flex-col gap-3"><a href={CLINIC.phoneHref} className={buttonStyles()}>{ui.call} · 604-263-1878</a><Link to={routeTo("contact", lang)} hash="inquiry" className={buttonStyles({ variant: "outline" })}>{ui.request}</Link></div>
+        </div>
+      </div>
+    </section>
+  );
   return (
-    <section className="bg-background py-20 md:py-28" aria-labelledby={heading ? "visit-title" : undefined}>
+    <section className="bg-background section-space" aria-labelledby={heading ? "visit-title" : undefined}>
       <div className="container-page">
         {heading && (
           <div className="mb-12" id="visit-title">

@@ -31,7 +31,7 @@ function childLabel(key: PageKey, lang: Lang) {
 function Dropdown({ item, lang, current }: { item: Item; lang: Lang; current: PageKey | null }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLLIElement>(null);
-  const active = item.children!.includes(current as PageKey);
+  const active = item.children?.includes(current as PageKey);
   const id = `menu-${item.label ?? item.key}`;
 
   useEffect(() => {
@@ -81,7 +81,7 @@ function Dropdown({ item, lang, current }: { item: Item; lang: Lang; current: Pa
         )}
       >
         <ul className="rounded-xl border bg-popover p-2 shadow-lift">
-          {item.children!.map((c) => (
+          {item.children?.map((c) => (
             <li key={c}>
               <Link
                 to={routeTo(c, lang)}
@@ -121,7 +121,7 @@ export function LangSwitch({ className, dark }: { className?: string; dark?: boo
       }}
       className={cn(
         "inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 text-sm font-medium transition-colors",
-        dark ? "border-on-dark/30 text-on-dark hover:bg-on-dark hover:text-primary-deep" : "border-primary/20 text-primary-deep hover:border-primary",
+        dark ? "border-on-dark/30 text-on-dark hover:bg-on-dark hover:text-primary-deep" : "border-input text-primary-deep hover:border-primary",
         className,
       )}
     >
@@ -182,10 +182,17 @@ export function SiteHeader() {
   }, [open]);
 
   return (
+    <>
+    <div className="bg-primary-deep text-on-dark-muted text-[13px]">
+      <div className="container-page flex min-h-9 flex-wrap items-center justify-between gap-x-6 gap-y-1 py-1.5">
+        <span>{lang === "en" ? "5763 Balsam St, Kerrisdale, Vancouver" : "5763 Balsam St，溫哥華 Kerrisdale"}</span>
+        <span className="hidden items-center gap-6 md:flex"><Link to={routeTo("cdcp", lang)}>{lang === "en" ? "Proudly accepting the Canada Dental Care Plan" : "欣然接受加拿大牙科護理計劃"}</Link><a href={CLINIC.phoneHref}>604-263-1878</a></span>
+      </div>
+    </div>
     <header
       className={cn(
         "sticky top-0 z-40 h-[var(--header-h)] border-b transition-all duration-300",
-        scrolled ? "border-border bg-surface/95 shadow-soft backdrop-blur" : "border-transparent bg-background",
+        scrolled ? "border-border bg-background/95 shadow-soft backdrop-blur-xl" : "border-border bg-background/90 backdrop-blur-xl",
       )}
     >
       <div className="container-page flex h-full items-center justify-between gap-4">
@@ -193,7 +200,7 @@ export function SiteHeader() {
           <Logo />
         </Link>
 
-        <nav aria-label={lang === "en" ? "Main" : "主選單"} className="hidden lg:block">
+        <nav aria-label={lang === "en" ? "Main" : "主選單"} className="hidden min-[1240px]:block">
           <ul className="flex items-center gap-0.5">
             {NAV.map((item) =>
               item.children ? (
@@ -219,21 +226,13 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <LangSwitch className="hidden sm:inline-flex" />
-          <a
-            href={CLINIC.phoneHref}
-            aria-label={`${ui.call}: ${CLINIC.phoneDisplay}`}
-            className="hidden size-11 items-center justify-center rounded-full border border-primary/20 text-primary-deep transition-colors hover:border-primary hover:bg-surface md:inline-flex 2xl:w-auto 2xl:gap-2 2xl:px-4"
-          >
-            <Phone className="size-4" aria-hidden />
-            <span className="hidden whitespace-nowrap text-sm font-medium 2xl:inline">{CLINIC.phoneDisplay.replace("+1 ", "")}</span>
-          </a>
           <Link to={routeTo("contact", lang)} hash="inquiry" className={cn(buttonStyles({ size: "sm" }), "hidden md:inline-flex")}>
             {ui.request}
           </Link>
           <button
             ref={toggleRef}
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-primary/20 text-primary-deep lg:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-primary/20 text-primary-deep min-[1240px]:hidden"
             aria-expanded={open}
             aria-controls="mobile-drawer"
             aria-label={open ? ui.close : ui.menu}
@@ -246,7 +245,7 @@ export function SiteHeader() {
 
       {/* Mobile drawer */}
       <div
-        className={cn("fixed inset-0 top-[var(--header-h)] z-40 bg-primary-deep/30 transition-opacity lg:hidden", open ? "opacity-100" : "pointer-events-none opacity-0")}
+        className={cn("fixed inset-0 top-[var(--header-h)] z-40 bg-primary-deep/30 transition-opacity min-[1240px]:hidden", open ? "opacity-100" : "pointer-events-none opacity-0")}
         onClick={() => setOpen(false)}
         aria-hidden
       />
@@ -257,7 +256,7 @@ export function SiteHeader() {
         aria-modal="true"
         aria-label={ui.menu}
         hidden={!open}
-        className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-50 overflow-y-auto bg-surface lg:hidden"
+        className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-50 overflow-y-auto bg-surface min-[1240px]:hidden"
       >
         <nav aria-label={ui.menu} className="container-page flex min-h-full flex-col py-6">
           <ul className="divide-y border-y">
@@ -314,5 +313,6 @@ export function SiteHeader() {
         </nav>
       </div>
     </header>
+    </>
   );
 }

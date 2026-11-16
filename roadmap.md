@@ -1,5 +1,11 @@
 # Domain-aware indexing
 
+# Version B visual redesign
+
+- [x] Add the supplied logo and new shared design system, header, and compact footer.
+- [x] Restyle bilingual home and inner pages without changing route, copy, SEO, or inquiry sources.
+- [x] Confirm the build and preserved patient interactions.
+
 - [x] Add conditional noindex to platform-host HTML without changing access, content or custom-domain responses.
 - [x] Allow crawler access in platform robots.txt and preserve production canonicals/sitemap.
 - [x] Test platform/custom host behavior and inspect available public HTTP responses.

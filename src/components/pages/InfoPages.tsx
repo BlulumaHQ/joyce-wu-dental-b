@@ -57,7 +57,7 @@ const ABOUT = {
 export function AboutPage({ lang }: { lang: Lang }) {
   const a = ABOUT[lang];
   return (
-    <>
+    <div className="version-b-inner">
       <PageHeader page="about" lang={lang} image={{ src: "/images/clinic-front-desk.webp", alt: lang === "en" ? "Front desk at Dr. Joyce Wu Dental Kerrisdale" : "診所接待處" }} />
       <section className="py-16 md:py-24">
         <div className="container-page">
@@ -133,7 +133,7 @@ export function AboutPage({ lang }: { lang: Lang }) {
         </div>
       </section>
       <CtaBand lang={lang} title={lang === "en" ? "Questions about insurance or coverage?" : "對保險或保障有疑問？"} body={lang === "en" ? "Our front desk is happy to help you check coverage or submit a predetermination." : "我們的前台團隊樂意協助您確認保障或提交預估申請。"} />
-    </>
+    </div>
   );
 }
 
@@ -143,16 +143,16 @@ export function TeamPage({ lang }: { lang: Lang }) {
     ? { implant: "Offers Nobel Biocare dental implants.", implantLink: "Dental implants", group: "Dr. Miles Chu, Dr. Cindy Wang and Dr. Joyce Wu at the clinic" }
     : { implant: "為患者提供 Nobel Biocare 植體。", implantLink: "植牙服務", group: "Dr. Miles Chu、Dr. Cindy Wang 及 Dr. Joyce Wu 在診所內" };
   return (
-    <>
+    <div className="version-b-inner">
       <PageHeader page="team" lang={lang} image={{ src: "/images/dental-team-group.webp", alt: L.group }} />
       <section className="py-16 md:py-24">
         <div className="container-page">
           <ul className="grid grid-cols-1 gap-8 min-[480px]:grid-cols-2 lg:grid-cols-4">
             {DOCTORS.map((d) => (
-              <li key={d.name} className="flex flex-col overflow-hidden rounded-2xl border bg-surface">
-                <img src={d.image} alt={`${d.name}, ${d.designation}`} width={800} height={800} loading="lazy" className="aspect-square w-full object-cover" />
+              <li key={d.name} className="flex flex-col">
+                <img src={d.image} alt={`${d.name}, ${d.designation}`} width={800} height={800} loading="lazy" className="portrait-arch w-full object-cover" />
                 <div className="flex flex-1 flex-col p-6">
-                  <h2 className="font-display text-xl font-semibold">{d.name}</h2>
+                  <h2 className="font-display text-[27px] font-medium">{d.name}</h2>
                   <p className="mt-1 text-sm font-medium tracking-wide text-champagne-ink">{d.designation}</p>
                   {d.name === "Dr. Miles Chu" && (
                     <p className="mt-4 text-sm text-muted-foreground">
@@ -169,7 +169,7 @@ export function TeamPage({ lang }: { lang: Lang }) {
         </div>
       </section>
       <CtaBand lang={lang} />
-    </>
+    </div>
   );
 }
 
@@ -178,7 +178,7 @@ export function FaqPage({ lang }: { lang: Lang }) {
   const items = FAQS[lang];
   const L = lang === "en" ? { jump: "Questions", still: "Still have a question?" } : { jump: "問題列表", still: "還有其他問題？" };
   return (
-    <>
+    <div className="version-b-inner">
       <PageHeader page="faq" lang={lang} />
       <section className="py-16 md:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-[0.6fr_1.4fr]">
@@ -198,7 +198,7 @@ export function FaqPage({ lang }: { lang: Lang }) {
         </div>
       </section>
       <CtaBand lang={lang} title={L.still} />
-    </>
+    </div>
   );
 }
 
@@ -228,7 +228,7 @@ export function CdcpPage({ lang }: { lang: Lang }) {
         about: "保險及診所政策",
       };
   return (
-    <>
+    <div className="version-b-inner">
       <PageHeader page="cdcp" lang={lang} />
       <section className="py-16 md:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
@@ -258,7 +258,7 @@ export function CdcpPage({ lang }: { lang: Lang }) {
         </div>
       </section>
       <CtaBand lang={lang} />
-    </>
+    </div>
   );
 }
 
@@ -266,7 +266,7 @@ export function CdcpPage({ lang }: { lang: Lang }) {
 export function ContactPage({ lang }: { lang: Lang }) {
   const ui = UI[lang];
   return (
-    <>
+    <div className="version-b-inner">
       <PageHeader page="contact" lang={lang}>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <a href={CLINIC.phoneHref} className={buttonStyles({ size: "lg" })}>
@@ -278,6 +278,6 @@ export function ContactPage({ lang }: { lang: Lang }) {
         </div>
       </PageHeader>
       <ContactSection lang={lang} heading={false} />
-    </>
+    </div>
   );
 }

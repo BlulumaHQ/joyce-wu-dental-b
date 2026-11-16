@@ -11,8 +11,8 @@
  */
 
 @theme inline {
-  --font-display: "Manrope", "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Noto Serif TC", Georgia, serif;
+  --font-sans: "Jost", "Noto Sans TC", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -38,6 +38,7 @@
   --color-ivory: var(--ivory);
   --color-surface: var(--surface);
   --color-on-dark: var(--on-dark);
+  --color-gold-light: var(--gold-light);
   --color-on-dark-muted: var(--on-dark-muted);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
@@ -48,35 +49,36 @@
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.97 0.007 88.6); /* Warm Ivory */
-  --surface: oklch(1 0 0); /* White */
-  --ivory: oklch(0.97 0.007 88.6);
-  --foreground: oklch(0.302 0.015 183); /* Charcoal */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.302 0.015 183);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.302 0.015 183);
-  --primary: oklch(0.395 0.049 183.6); /* Deep Evergreen */
-  --primary-deep: oklch(0.325 0.041 185.5); /* Dark Evergreen */
-  --primary-foreground: oklch(0.985 0.004 88.6);
-  --secondary: oklch(0.915 0.015 151.8); /* Soft Sage */
-  --secondary-foreground: oklch(0.325 0.041 185.5);
-  --muted: oklch(0.954 0.008 139.4);
-  --muted-foreground: oklch(0.5 0.015 172);
-  --accent: oklch(0.915 0.015 151.8);
-  --accent-foreground: oklch(0.325 0.041 185.5);
-  --champagne: oklch(0.758 0.064 74.6); /* Muted Champagne */
-  --champagne-ink: oklch(0.52 0.06 73); /* champagne tone with AA contrast on ivory */
-  --on-dark: oklch(0.97 0.007 88.6);
-  --on-dark-muted: oklch(0.85 0.015 160);
+  --gold-light: oklch(0.82552211 0.06956098 78.17375277);
+  --radius: 1.25rem;
+  --background: oklch(0.98377858 0.01184807 79.78536434); /* Warm Ivory */
+  --surface: oklch(0.99419801 0.00692612 88.64114463); /* White */
+  --ivory: oklch(0.98377858 0.01184807 79.78536434);
+  --foreground: oklch(0.27370046 0.02231652 171.92572868); /* Charcoal */
+  --card: oklch(0.98377858 0.01184807 79.78536434);
+  --card-foreground: oklch(0.27370046 0.02231652 171.92572868);
+  --popover: oklch(0.98377858 0.01184807 79.78536434);
+  --popover-foreground: oklch(0.27370046 0.02231652 171.92572868);
+  --primary: oklch(0.35190290 0.05975556 173.05536142); /* Deep Evergreen */
+  --primary-deep: oklch(0.29019225 0.04776454 172.89276022); /* Dark Evergreen */
+  --primary-foreground: oklch(0.98377858 0.01184807 79.78536434);
+  --secondary: oklch(0.95053536 0.02125956 85.94399571); /* Soft Sage */
+  --secondary-foreground: oklch(0.29019225 0.04776454 172.89276022);
+  --muted: oklch(0.95053536 0.02125956 85.94399571);
+  --muted-foreground: oklch(0.43716744 0.02299703 166.94445404);
+  --accent: oklch(0.71569959 0.05687363 136.79140289);
+  --accent-foreground: oklch(0.29019225 0.04776454 172.89276022);
+  --champagne: oklch(0.71760300 0.08358991 76.22149618); /* Muted Champagne */
+  --champagne-ink: oklch(0.54561553 0.07683045 76.10051350); /* champagne tone with AA contrast on ivory */
+  --on-dark: oklch(0.98377858 0.01184807 79.78536434);
+  --on-dark-muted: oklch(0.88103497 0.03963221 94.31768006);
   --destructive: oklch(0.52 0.17 27);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.89 0.012 120);
+  --border: oklch(0.90767906 0.02806849 88.75767818);
   --border-dark: oklch(1 0 0 / 14%);
-  --input: oklch(0.86 0.012 140);
-  --ring: oklch(0.395 0.049 183.6);
-  --header-h: 76px;
+  --input: oklch(0.85644937 0.03293005 87.29759533);
+  --ring: oklch(0.35190290 0.05975556 173.05536142);
+  --header-h: 92px;
   --shadow-soft: 0 1px 2px oklch(0.3 0.03 185 / 6%), 0 12px 32px -16px oklch(0.3 0.03 185 / 18%);
   --shadow-lift: 0 2px 4px oklch(0.3 0.03 185 / 6%), 0 24px 48px -20px oklch(0.3 0.03 185 / 28%);
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
@@ -103,7 +105,7 @@
     -webkit-font-smoothing: antialiased;
   }
   html[lang^="zh"] body {
-    font-family: "Noto Sans TC", "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Jost", "Noto Sans TC", sans-serif;
     line-break: strict;
   }
   h1,
@@ -112,12 +114,12 @@
   h4 {
     font-family: var(--font-display);
     color: var(--color-primary-deep);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
     text-wrap: balance;
   }
   html[lang^="zh"] :is(h1, h2, h3, h4) {
-    font-family: "Noto Sans TC", var(--font-display);
-    letter-spacing: 0.01em;
+    font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+    letter-spacing: 0;
   }
   p {
     text-wrap: pretty;
@@ -145,9 +147,9 @@
 
 @utility eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--color-champagne-ink);
   display: inline-flex;
@@ -162,12 +164,12 @@
 }
 
 @utility eyebrow-dark {
-  color: var(--color-champagne);
+  color: var(--color-gold-light);
 }
 
 @utility rule-champagne {
   height: 1px;
-  background: linear-gradient(90deg, var(--color-champagne), transparent);
+  background: var(--color-champagne);
 }
 
 @utility shadow-soft {
@@ -201,15 +203,6 @@
   & ol li + li {
     margin-top: 0.5rem;
   }
-}
-
-@utility hero-overlay {
-  background: linear-gradient(
-    100deg,
-    oklch(0.325 0.041 185.5 / 92%) 0%,
-    oklch(0.325 0.041 185.5 / 78%) 45%,
-    oklch(0.325 0.041 185.5 / 20%) 100%
-  );
 }
 
 @utility fade-up {
@@ -247,4 +240,53 @@
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
+}
+
+/* Version B: editorial typography and shared page surfaces. */
+@layer base {
+ body { font-size: 17px; line-height: 1.6; }
+ h1 { font-size: 48px; line-height: 1.02; font-weight: 500; }
+ h2 { font-weight: 500; }
+}
+.editorial-title { font-size: 38px; line-height: 1.06; font-weight: 500; }
+.page-heading { font-size: 48px; line-height: 1.02; font-weight: 500; }
+.section-space { padding-block: 72px; }
+.logo-mark { width: 52px; height: 52px; }
+.logo-name { font-size: 26px; font-weight: 600; line-height: 1; }
+.logo-location { font-size: 11px; letter-spacing: .32em; line-height: 1.5; }
+.footer-logo .logo-mark { width: 56px; height: 56px; }
+.hero-arch { border-radius: 280px 280px 24px 24px; aspect-ratio: 4 / 5; object-position: 62% center; }
+.portrait-arch { border-radius: 200px 200px 20px 20px; aspect-ratio: 4 / 5; }
+.version-b-inner section:not(.page-header):nth-of-type(even) { background-color: var(--secondary); }
+.version-b-inner section.bg-primary-deep { background-color: var(--primary-deep); }
+.version-b-inner img { border-radius: 20px; }
+.version-b-inner img.portrait-arch { border-radius: 200px 200px 20px 20px; }
+.version-b-inner .service-sections { padding: 0; }
+.version-b-inner .service-sections > .container-page { max-width: none; padding: 0; }
+.version-b-inner .service-sections section { padding: 72px max(20px, calc((100% - 1176px) / 2)); }
+.version-b-inner .service-sections section:nth-child(even) { background: var(--secondary); }
+.version-b-inner .service-sections > .container-page > p { max-width: 1176px; margin: 0 auto; padding: 32px 20px; }
+.version-b-inner .service-sections .space-y-20 > * { margin-block-start: 0; }
+.faq-editorial { border-block: 1px solid var(--border); }
+.faq-editorial h3 { font-size: 25px; font-weight: 500; }
+.faq-editorial button { padding-inline: 0; }
+.faq-editorial [role=region] { padding-inline: 0; }
+.faq-toggle { background: var(--champagne); color: var(--primary-deep); border: 0; }
+.contact-dark address a > span:first-child { background: color-mix(in oklab, var(--on-dark) 10%, transparent); color: var(--gold-light); }
+.contact-dark address a > span:last-child > span:first-child { color: var(--gold-light); }
+.contact-dark address a > span:last-child > span:last-child { color: var(--on-dark); }
+.contact-dark address a:nth-child(2) > span:last-child > span:last-child { font-family: var(--font-display); font-size: 30px; }
+.contact-dark address { display: grid; gap: 24px; }
+@media (min-width: 768px) {
+ .page-heading { font-size: 76px; }
+ .editorial-title { font-size: 52px; }
+ .section-space { padding-block: 112px; }
+ .version-b-inner .service-sections section { padding-block: 112px; }
+}
+@media (max-width: 767px) {
+ :root { --header-h: 80px; }
+ .logo-name { font-size: 24px; }
+ .logo-location { font-size: 9px; }
+ .logo-mark { width: 46px; height: 46px; }
+ .version-b-inner section { padding-block: 72px; }
 }
