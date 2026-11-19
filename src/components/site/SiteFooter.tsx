@@ -76,7 +76,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-8 border-t border-border-dark pt-5 text-xs text-on-dark-muted md:mt-12">
-          <p>© {year} {CLINIC.name}. Website by <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="hover:text-on-dark">Bluluma Design</a></p>
+          <p>© {year} {CLINIC.name}. Website by <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="hover:text-on-dark">Bluluma Design</a>{" "}<span className="block mt-1 opacity-80" data-concept-note>Design concept for portfolio purposes only. Not the official website of Joyce Wu Dental.</span></p>
         </div>
       </div>
     </footer>
