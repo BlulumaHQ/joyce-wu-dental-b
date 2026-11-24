@@ -280,8 +280,8 @@
 @media (min-width: 768px) {
  .page-heading { font-size: 76px; }
  .editorial-title { font-size: 52px; }
- .section-space { padding-block: 112px; }
- .version-b-inner .service-sections section { padding-block: 112px; }
+ .section-space { padding-block: 96px; }
+ .version-b-inner .service-sections section { padding-block: 96px; }
 }
 @media (max-width: 767px) {
  :root { --header-h: 80px; }

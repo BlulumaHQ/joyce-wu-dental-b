@@ -184,9 +184,16 @@ export function SiteHeader() {
   return (
     <>
     <div className="bg-primary-deep text-on-dark-muted text-[13px]">
-      <div className="container-page flex min-h-9 flex-wrap items-center justify-between gap-x-6 gap-y-1 py-1.5">
-        <span>{lang === "en" ? "5763 Balsam St, Kerrisdale, Vancouver" : "5763 Balsam St，溫哥華 Kerrisdale"}</span>
-        <span className="hidden items-center gap-6 md:flex"><Link to={routeTo("cdcp", lang)}>{lang === "en" ? "Proudly accepting the Canada Dental Care Plan" : "欣然接受加拿大牙科護理計劃"}</Link><a href={CLINIC.phoneHref}>604-263-1878</a></span>
+      <div className="container-page flex min-h-11 items-center justify-between gap-x-6 py-1.5">
+        <span className="min-w-0 truncate">{lang === "en" ? "5763 Balsam St, Kerrisdale, Vancouver" : "5763 Balsam St，溫哥華 Kerrisdale"}</span>
+        <span className="flex items-center gap-6">
+          <Link to={routeTo("cdcp", lang)} className="hidden transition-colors hover:text-on-dark lg:inline">{lang === "en" ? "Proudly accepting the Canada Dental Care Plan" : "欣然接受加拿大牙科護理計劃"}</Link>
+          <a href={CLINIC.phoneHref} className="hidden items-center gap-1.5 font-medium text-on-dark transition-colors hover:text-gold-light sm:inline-flex">
+            <Phone className="size-3.5" aria-hidden />
+            604-263-1878
+          </a>
+          <LangSwitch dark className="min-h-8 border-on-dark/25 px-3 text-[13px]" />
+        </span>
       </div>
     </div>
     <header
@@ -225,7 +232,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <LangSwitch className="hidden sm:inline-flex" />
           <Link to={routeTo("contact", lang)} hash="inquiry" className={cn(buttonStyles({ size: "sm" }), "hidden md:inline-flex")}>
             {ui.request}
           </Link>

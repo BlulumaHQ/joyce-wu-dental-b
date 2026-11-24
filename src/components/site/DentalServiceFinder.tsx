@@ -10,12 +10,12 @@ import { SectionHeading } from "./Blocks";
 const ICONS = { general: CalendarCheck, cosmetic: Sparkles, implant: ShieldCheck, surgical: HeartPulse };
 
 export function DentalServiceFinder({ lang }: { lang: Lang }) {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState<string>("general");
   const c = PATIENT_INTERACTIONS[lang].finder;
   return (
     <section aria-labelledby="service-finder-title" className="bg-secondary section-space">
       <div className="container-page">
-        <Tabs value={selected} onValueChange={setSelected} activationMode="manual" className="grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <Tabs value={selected} onValueChange={setSelected} activationMode="manual" className="grid items-stretch gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div><div id="service-finder-title"><SectionHeading eyebrow={c.eyebrow} title={c.title} body={c.description} /></div>
           <TabsList aria-label={c.title} className="mt-8 grid h-auto grid-cols-1 items-stretch gap-3 rounded-none bg-transparent p-0">
             {FINDER_OPTIONS.map((key) => {
@@ -29,10 +29,10 @@ export function DentalServiceFinder({ lang }: { lang: Lang }) {
               );
             })}
           </TabsList></div>
-          <div className="min-h-[480px] rounded-[28px] bg-background p-6 shadow-soft md:p-10">
+          <div className="flex h-full flex-col rounded-[28px] bg-background p-6 shadow-soft md:p-10">
             {!selected && <div><p className="eyebrow">{c.eyebrow}</p><h3 className="mt-6 font-display text-[38px] leading-tight">{c.title}</h3><p className="mt-5 text-muted-foreground">{c.description}</p><Stethoscope aria-hidden className="mt-12 size-16 text-champagne" strokeWidth={1} /></div>}
           {FINDER_OPTIONS.map((key) => (
-            <TabsContent key={key} value={key} className="interaction-reveal m-0 min-h-[330px]">
+            <TabsContent key={key} value={key} className="interaction-reveal m-0">
               <div aria-live="polite" aria-atomic="true">
                 <p className="eyebrow">{c.options[key].label}</p>
                 <h3 className="mt-4 font-display text-[38px] font-medium leading-tight">{c.options[key].title}</h3>
@@ -45,7 +45,7 @@ export function DentalServiceFinder({ lang }: { lang: Lang }) {
               </div>
             </TabsContent>
           ))}
-          <p className="mt-6 border-t pt-5 text-sm leading-relaxed text-muted-foreground">{c.disclaimer}</p>
+          <div className="min-h-8 flex-1" aria-hidden /><p className="border-t pt-5 text-sm leading-relaxed text-muted-foreground">{c.disclaimer}</p>
           </div>
         </Tabs>
       </div>

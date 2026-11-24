@@ -113,7 +113,7 @@ export function HomePage({ lang }: { lang: Lang }) {
           </div>
           <div className="relative mx-auto w-full max-w-[470px] pb-8 pr-[22px] lg:pb-0">
             <div aria-hidden className="hero-arch absolute inset-y-0 left-[22px] right-0 border border-champagne" />
-            <img src="/images/clinic-reception-kerrisdale.webp" alt={lang === "en" ? "Reception desk at Dr. Joyce Wu Dental Kerrisdale" : "Dr. Joyce Wu Dental Kerrisdale 診所接待處"} width={1448} height={1086} fetchPriority="high" className="hero-arch relative w-full object-cover" />
+            <img src="/images/clinic-reception-front-desk.webp" alt={lang === "en" ? "Reception desk at Dr. Joyce Wu Dental Kerrisdale" : "Dr. Joyce Wu Dental Kerrisdale 診所接待處"} width={1440} height={1092} fetchPriority="high" className="hero-arch relative w-full object-cover" />
             <div className="absolute bottom-0 left-0 flex max-w-[95%] items-center gap-3 rounded-2xl border bg-background p-4 shadow-soft lg:-left-8 lg:bottom-7">
               <img src="/images/jwd-logo-mark.svg" alt="" width={48} height={48} className="size-12 shrink-0" />
               <div><p className="font-display text-2xl font-semibold text-primary">{lang === "en" ? "Open Saturdays" : "星期六營業"}</p><p className="text-xs text-muted-foreground">{HOURS.find(h => h.schema === "Saturday")?.label[lang]} · {lang === "en" ? "Closed Wed & Sun" : "星期三、日休息"}</p></div>

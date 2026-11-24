@@ -269,19 +269,19 @@ export function ContactSection({ lang, heading = true, defaultService, compact =
     : { eyebrow: "歡迎蒞臨", title: "位於 Kerrisdale 的診所", body: "我們位於溫哥華 Kerrisdale 的 Balsam Street。歡迎致電、發送電郵或提交查詢以安排看診。" };
   if (compact) return (
     <section className="contact-dark section-space bg-primary text-on-dark" aria-labelledby="visit-title">
-      <div className="container-page grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+      <div className="container-page grid items-stretch gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-x-20 lg:gap-y-14">
         <div>
           <div id="visit-title"><SectionHeading eyebrow={L.eyebrow} title={L.title} body={L.body} dark /></div>
           <div className="mt-8"><ContactDetails lang={lang} /></div>
           <a href={CLINIC.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 text-gold-light">{ui.directions}<ArrowRight aria-hidden className="size-4" /></a>
-          <img src="/images/clinic-treatment-room-map.webp" alt={lang === "en" ? "Treatment room with world-map wall feature" : "設有世界地圖牆飾的治療室"} width={1448} height={1086} loading="lazy" className="mt-8 aspect-[16/9] w-full rounded-[24px] object-cover" />
         </div>
-        <div className="rounded-[28px] bg-background p-7 md:p-10">
+        <div className="flex flex-col rounded-[28px] bg-background p-7 md:p-10">
           <h3 className="font-display text-[34px] font-medium text-primary">{ui.hours}</h3>
           <HoursList lang={lang} className="mt-6" />
           <p className="mt-5 text-sm text-muted-foreground">{ui.hoursNote}</p>
-          <div className="mt-8 flex flex-col gap-3"><a href={CLINIC.phoneHref} className={buttonStyles()}>{ui.call} · 604-263-1878</a><Link to={routeTo("contact", lang)} hash="inquiry" className={buttonStyles({ variant: "outline" })}>{ui.request}</Link></div>
+          <div className="mt-auto flex flex-col gap-3 pt-8"><a href={CLINIC.phoneHref} className={buttonStyles()}>{ui.call} · 604-263-1878</a><Link to={routeTo("contact", lang)} hash="inquiry" className={buttonStyles({ variant: "outline" })}>{ui.request}</Link></div>
         </div>
+        <img src="/images/clinic-treatment-room-map.webp" alt={lang === "en" ? "Treatment room with world-map wall feature" : "設有世界地圖牆飾的治療室"} width={1448} height={1086} loading="lazy" className="aspect-[16/9] w-full rounded-[24px] object-cover lg:col-span-2 lg:aspect-[21/8]" />
       </div>
     </section>
   );
@@ -309,19 +309,19 @@ export function ContactSection({ lang, heading = true, defaultService, compact =
                 </a>
               </div>
             </div>
-            <div className="rounded-2xl border bg-surface p-7 md:p-9">
+            <div className="flex-1 rounded-2xl border bg-surface p-7 md:p-9">
               <h3 className="flex items-center gap-2 font-display text-xl font-semibold">
                 <Clock className="size-5 text-champagne-ink" aria-hidden /> {ui.hours}
               </h3>
               <HoursList lang={lang} className="mt-4" />
               <p className="mt-4 text-xs text-muted-foreground">{ui.hoursNote}</p>
             </div>
-            <MapEmbed lang={lang} className="min-h-[300px] flex-1" />
           </div>
           <div id="inquiry" className="scroll-mt-28">
             <InquiryForm lang={lang} defaultService={defaultService} />
           </div>
         </div>
+        <MapEmbed lang={lang} className="mt-8 h-[360px] min-h-0 md:h-[440px]" />
       </div>
     </section>
   );
