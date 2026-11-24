@@ -113,7 +113,7 @@ export function HomePage({ lang }: { lang: Lang }) {
           </div>
           <div className="relative mx-auto w-full max-w-[470px] pb-8 pr-[22px] lg:pb-0">
             <div aria-hidden className="hero-arch absolute inset-y-0 left-[22px] right-0 border border-champagne" />
-            <img src="/images/clinic-reception-kerrisdale.webp" alt={lang === "en" ? "Reception desk at Dr. Joyce Wu Dental Kerrisdale" : "Dr. Joyce Wu Dental Kerrisdale 診所接待處"} width={1200} height={630} fetchPriority="high" className="hero-arch relative w-full object-cover" />
+            <img src="/images/clinic-reception-kerrisdale.webp" alt={lang === "en" ? "Reception desk at Dr. Joyce Wu Dental Kerrisdale" : "Dr. Joyce Wu Dental Kerrisdale 診所接待處"} width={1448} height={1086} fetchPriority="high" className="hero-arch relative w-full object-cover" />
             <div className="absolute bottom-0 left-0 flex max-w-[95%] items-center gap-3 rounded-2xl border bg-background p-4 shadow-soft lg:-left-8 lg:bottom-7">
               <img src="/images/jwd-logo-mark.svg" alt="" width={48} height={48} className="size-12 shrink-0" />
               <div><p className="font-display text-2xl font-semibold text-primary">{lang === "en" ? "Open Saturdays" : "星期六營業"}</p><p className="text-xs text-muted-foreground">{HOURS.find(h => h.schema === "Saturday")?.label[lang]} · {lang === "en" ? "Closed Wed & Sun" : "星期三、日休息"}</p></div>
@@ -126,8 +126,8 @@ export function HomePage({ lang }: { lang: Lang }) {
       <section className="section-space bg-primary text-on-dark">
         <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="relative">
-            <img src="/images/clinic-waiting-area.webp" alt={lang === "en" ? "Bright patient waiting area with large windows" : "光線充足的候診區"} width={585} height={444} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
-            <img src="/images/clinic-treatment-room.webp" alt={lang === "en" ? "Treatment room with dental chair" : "設有牙科椅的治療室"} width={585} height={444} loading="lazy" className="absolute -bottom-10 -right-4 hidden w-[46%] rounded-xl border-[6px] border-primary object-cover shadow-lift sm:block md:-right-8" />
+            <img src="/images/clinic-waiting-area.webp" alt={lang === "en" ? "Bright patient waiting area with large windows" : "光線充足的候診區"} width={1448} height={1086} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <img src="/images/clinic-treatment-room.webp" alt={lang === "en" ? "Treatment room with dental chair" : "設有牙科椅的治療室"} width={1448} height={1086} loading="lazy" className="absolute -bottom-10 -right-4 hidden w-[46%] rounded-xl border-[6px] border-primary object-cover shadow-lift sm:block md:-right-8" />
           </div>
           <div>
             <p className="eyebrow eyebrow-dark">{c.welcomeEyebrow}</p>
@@ -187,7 +187,7 @@ export function HomePage({ lang }: { lang: Lang }) {
         <div className="container-page grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div>
             <SectionHeading eyebrow={c.whyEyebrow} title={c.whyTitle} />
-            <img src="/images/clinic-treatment-room-map.webp" alt={lang === "en" ? "Treatment room with world-map wall feature" : "設有世界地圖牆飾的治療室"} width={585} height={444} loading="lazy" className="mt-10 aspect-[4/3] w-full rounded-2xl object-cover" />
+            <img src="/images/clinic-treatment-room-map.webp" alt={lang === "en" ? "Treatment room with world-map wall feature" : "設有世界地圖牆飾的治療室"} width={1448} height={1086} loading="lazy" className="mt-10 aspect-[4/3] w-full rounded-2xl object-cover" />
           </div>
           <ul className="grid gap-px self-center overflow-hidden rounded-2xl bg-border sm:grid-cols-2">
             {c.why.map((w) => (

@@ -274,7 +274,7 @@ export function ContactSection({ lang, heading = true, defaultService, compact =
           <div id="visit-title"><SectionHeading eyebrow={L.eyebrow} title={L.title} body={L.body} dark /></div>
           <div className="mt-8"><ContactDetails lang={lang} /></div>
           <a href={CLINIC.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 text-gold-light">{ui.directions}<ArrowRight aria-hidden className="size-4" /></a>
-          <img src="/images/clinic-treatment-room-map.webp" alt={lang === "en" ? "Treatment room with world-map wall feature" : "設有世界地圖牆飾的治療室"} width={585} height={444} loading="lazy" className="mt-8 aspect-[16/9] w-full rounded-[24px] object-cover" />
+          <img src="/images/clinic-treatment-room-map.webp" alt={lang === "en" ? "Treatment room with world-map wall feature" : "設有世界地圖牆飾的治療室"} width={1448} height={1086} loading="lazy" className="mt-8 aspect-[16/9] w-full rounded-[24px] object-cover" />
         </div>
         <div className="rounded-[28px] bg-background p-7 md:p-10">
           <h3 className="font-display text-[34px] font-medium text-primary">{ui.hours}</h3>
