@@ -141,6 +141,11 @@ export function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const drawerRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const [drawerTop, setDrawerTop] = useState<number | undefined>(undefined);
+  useEffect(() => {
+    if (open) setDrawerTop(headerRef.current?.getBoundingClientRect().bottom);
+  }, [open]);
 
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 12);
@@ -197,6 +202,7 @@ export function SiteHeader() {
       </div>
     </div>
     <header
+      ref={headerRef}
       className={cn(
         "sticky top-0 z-40 h-[var(--header-h)] border-b transition-all duration-300",
         scrolled ? "border-border bg-background/95 shadow-soft backdrop-blur-xl" : "border-border bg-background/90 backdrop-blur-xl",
@@ -252,6 +258,7 @@ export function SiteHeader() {
       {/* Mobile drawer */}
       <div
         className={cn("fixed inset-0 top-[var(--header-h)] z-40 bg-primary-deep/30 transition-opacity min-[1240px]:hidden", open ? "opacity-100" : "pointer-events-none opacity-0")}
+        style={drawerTop !== undefined ? { top: drawerTop } : undefined}
         onClick={() => setOpen(false)}
         aria-hidden
       />
@@ -263,6 +270,7 @@ export function SiteHeader() {
         aria-label={ui.menu}
         hidden={!open}
         className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-50 overflow-y-auto bg-surface min-[1240px]:hidden"
+        style={drawerTop !== undefined ? { top: drawerTop } : undefined}
       >
         <nav aria-label={ui.menu} className="container-page flex min-h-full flex-col py-6">
           <ul className="divide-y border-y">
